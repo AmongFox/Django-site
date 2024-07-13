@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/profile-edit.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактирование профиля</title>
+</head>
+<body>
+<div class="container">
+  <h2>Редактирование профиля</h2>
+  <h4>Пользователь {{ user.username }}</h4>
+  <form id="data-form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Изменить</button>
+  </form>
+  <p><a href="{% url 'myauth:profile' pk=profile.pk %}">Вернуться к профилю</a></p>
+</div>
+</body>
+</html>

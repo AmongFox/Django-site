@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="{% static 'css/list-style.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% translate 'Статьи' %}</title>
+</head>
+<body>
+<h1>{% translate 'Список статей' %}</h1>
+{% if articles %}
+<table>
+  <tr>
+    <th>{% translate 'Заголовок' %}</th>
+    <th>{% translate 'Дата публикации' %}</th>
+    <th>{% translate 'Автор' %}</th>
+    <th>{% translate 'Категория' %}</th>
+    <th>{% translate 'Теги' %}</th>
+  </tr>
+  {% for article in articles %}
+  <tr>
+    <td><a href="{% url 'blogapp:article_detail' article.pk %}">{{ article.title }}</a></td>
+    <td>{{ article.pub_date }}</td>
+    <td><a href="{% url 'blogapp:author_detail' article.author.pk %}">{{ article.author.name }}</a></td>
+    <td>{{ article.category.name }}</td>
+    <td>
+      {% for tag in article.tags.all|slice:":3" %}
+        {% if forloop.first %}
+          {{ tag.name }}
+        {% else %}
+        , {{ tag.name }}
+        {% endif %}
+      {% endfor %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+  <h3>{% translate 'Нет статей!' %}</h3>
+{% endif %}
+<div>
+    <p><a href="{% url 'blogapp:create_article' %}">{% translate 'Создание новой статьи' %}</a></p>
+</div>
+</body>

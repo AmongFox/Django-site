@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+{% load static %}
+{% load cache %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль {{ profile.user.username }}</title>
+</head>
+
+<body>
+    <div class="container">
+        {% if user.pk == profile.user.pk %}
+            <h1>Ваш профиль</h1>
+        {% else %}
+             <h1>Профиль пользователя</h1>
+        {% endif %}
+        {% if user.is_authenticated %}
+            {% cache 600 profile user.pk %}
+                <div>
+                    {% if user.profile.avatar %}
+                        <img src="{{ profile.avatar.url }}" alt="{{ profile.avatar.name }}" class="avatar">
+                    {% else %}
+                        Не удалось загрузить фото профиля
+                    {% endif %}
+                </div>
+                <h3>
+                    {% if profile.user.is_staff %}
+                        <p>Администратор</p>
+                    {% endif %}
+                    {{ profile.user.username }}
+                </h3>
+                <h2>Подробнее</h2>
+                <p>Дата регистрации: {{ user.date_joined }}</p>
+                <div class="user_first_last_name">
+                    <p>Имя: {% firstof profile.user.first_name 'Отсутствует' %}</p>
+                    <p>Фамилия: {% firstof profile.user.last_name 'Отсутствует' %}</p>
+                </div>
+                <p>Почта: {% firstof profile.user.email 'Отсутствует' %}</p>
+                <p>О себе: {% firstof profile.user.profile.bio 'Отсутствует' %}</p>
+            {% endcache %}
+            {% else %}
+                <h2>Вы не авторизованы</h2>
+            {% endif %}
+        <div class="links">
+            <div>
+                <a href="{% url 'myauth:profile_list' %}">Список пользователей</a>
+            </div>
+            {% if user.pk == profile.user.pk or user.is_staff %}
+                <div>
+                    <a href="{% url 'myauth:profile_edit' pk=profile.pk %}">Редактировать профиль</a>
+                </div>
+                {% if user.pk == profile.user.pk %}
+                    <div>
+                        <a href="{% url 'myauth:logout' %}">Выйти</a>
+                    </div>
+                {% endif %}
+            {% else %}
+                <div>
+                    <a href="{% url 'myauth:profile' pk=user.profile.pk %}">Перейти на свой профиль</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</body>

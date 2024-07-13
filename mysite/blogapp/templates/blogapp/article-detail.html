@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="{% static 'css/detail-style.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% translate 'Статья' %}</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>{{ article.title }}</h1>
+        <p>{{ article.content }}</p>
+        <p>Дата публикации: {{ article.pub_date }}</p>
+        <a href="{% url 'blogapp:articles' %}">Вернуться к списку статей</a>
+        <a href="{% url 'blogapp:delete_article' article.id %}">Удалить статью</a>
+    </div>
+</body>

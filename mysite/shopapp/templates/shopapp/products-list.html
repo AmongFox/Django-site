@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="{% static 'css/list-style.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% translate 'Список продуктов' %}</title>
+</head>
+<body>
+<h1>{% translate 'Продукты' %}</h1>
+{% if products %}
+<table>
+  <tr>
+    <th>{% translate 'Имя' %} / {% translate 'Стоимость' %} / {% translate 'Процент скидки' %}</th>
+    <th>{% translate 'Изображение' %}</th>
+  </tr>
+  {% for product in products %}
+  <tr>
+    <td>
+      <p>{% translate 'Название' %} — <a href="{% url 'shopapp:products_detail' pk=product.pk %}">{{ product.name }}</a></p>
+      <p>{% translate 'Цена' %} — {{ product.price }}</p>
+      {% translate 'Отсутствует' as no_discount %}
+      <p>{% translate 'Скидка' %} — {% firstof product.discount no_discount %}</p>
+    </td>
+    {% if product.preview %}
+      <td><img src="{{ product.preview.url }}" width="120" height="120" alt="{{ product.preview.name }}"></td>
+    {% endif %}
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+  <h3>{% translate 'Нет продуктов!' %}</h3>
+{% endif %}
+
+<div>
+    {% if perms.shopapp.add_product %}
+      <p><a href="{% url 'shopapp:products_create' %}">{% translate 'Создание нового продукта' %}</a></p>
+    {% else %}
+    {% endif %}
+</div>
+</body>
+</html>

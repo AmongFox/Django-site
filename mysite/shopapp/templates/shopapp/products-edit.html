@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="{% static 'css/create-style.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% translate 'Форма редактирования продукта' %}</title>
+</head>
+
+<body>
+<div class="form-container">
+  <h2>{% translate 'Редактирование продукта' %}</h2>
+  <form id="data-form" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{% translate 'Изменить' %}</button>
+  </form>
+  <p><a href="{% url 'shopapp:products_detail' pk=object.pk %}">{% translate 'Вернуться к продукту' %}</a></p>
+</div>
+</body>
+</html>

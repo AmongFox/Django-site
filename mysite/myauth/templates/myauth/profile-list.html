@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="{% static 'css/profile-list.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Список пользователей</title>
+</head>
+<body>
+<h1>Пользователи</h1>
+{% if profiles %}
+<table>
+  <tr>
+    <th>Аватар</th>
+    <th>Имя пользователя</th>
+  </tr>
+  {% for profile in profiles %}
+  <tr>
+    <td>
+      <p><img src="{{ profile.avatar.url }}" alt="{{ profile.avatar.name }}" class="avatar"></p>
+    </td>
+    <td>
+      <a href="{% url 'myauth:profile' pk=profile.pk %}">{{ profile.user.username }}</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+  <h3>Нет пользователей!</h3>
+{% endif %}
+<div>
+    <a href="{% url 'myauth:profile' pk=user.profile.pk %}">Вернуться к профилю</a>
+</div>
+</body>
+</html>

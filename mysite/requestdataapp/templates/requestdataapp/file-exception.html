@@ -1,0 +1,9 @@
+{% extends 'requestdataapp/base.html' %}
+
+{% block title %}
+    File exception
+{% endblock %}
+
+{% block body %}
+    <h1>Размер вашего файла слишком велик <code>(Максимальный размер {{ max_file_size }} MB) Размер отправленного файла: {{ file_size }} MB</code></h1>
+{% endblock %}

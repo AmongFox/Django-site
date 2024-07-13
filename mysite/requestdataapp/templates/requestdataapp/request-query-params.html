@@ -1,0 +1,17 @@
+{% extends 'requestdataapp/base.html' %}
+
+{% block title %}
+    Demo request parameters
+{% endblock %}
+
+{% block body %}
+    <h1>Good afternoon, {% firstof request.GET.name 'User'%}</h1>
+
+    <div>
+        <pre>
+            storage_1 = {{ storage_1 }}
+            storage_2 = {{ storage_2 }}
+            result = {{ result }}
+        </pre>
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="{% static 'css/create-style.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% translate 'Форма создания автора' %}</title>
+</head>
+<body>
+<div class="form-container">
+    <h2>{% translate 'Регистрация автора' %}</h2>
+    <form id="data-form" method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">{% translate 'Отправить' %}</button>
+    </form>
+    <p><a href="{% url 'blogapp:authors' %}">{% translate 'Список авторов' %}</a></p>
+</div>
+</body>

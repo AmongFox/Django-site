@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+            Base Title
+        {% endblock %}
+    </title>
+</head>
+<body>
+{% block body %}
+
+
+{% endblock %}
+
+<br>
+<div>
+    <p><b>HTTPS User-agent</b> — {{ request.user_agent }}</p>
+    <p><b>Current time</b> — {% now "N j, Y, H:i" %}</p>
+</div>
+</body>
+</html>

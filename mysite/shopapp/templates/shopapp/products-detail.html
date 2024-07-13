@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="{% static 'css/detail-style.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% translate 'Информация о продукте' %}</title>
+  <script>
+      function toggleImage() {
+          var image = document.getElementById("images-container");
+          if (image.style.display == "none") {
+              image.style.display = "flex";
+          } else {
+              image.style.display = "none";
+          }
+      }
+  </script>
+</head>
+
+<body>
+    <div class="container">
+        {% if product.preview %}
+            <div class="image-container">
+                <img src="{{ product.preview.url }}" alt="{{ product.preview.name }}" class="product-image">
+            </div>
+        {% endif %}
+        <button onclick="toggleImage()">{% translate 'Показать/скрыть изображение' %}</button>
+        <h3>{% translate 'Изображения:' %}</h3>
+        <div class="images-container" id="images-container">
+        {% for image in product.images.all %}
+            <div>
+                <img src="{{ image.image.url }}" width="200" height="200" alt="{{ image.image.name }}">
+                <div>{{ image.description }}</div>
+            </div>
+        {% empty %}
+            <div>{% translate 'Изображения не найдены' %}</div>
+        {% endfor %}
+        </div>
+
+        <h1>{% translate 'Продукт' %} — <strong>{{ product.name }}</strong></h1>
+            <div><em>{{ product.description }}</em></div>
+        <div class="values">
+            <div>{% translate 'Цена:' %} {{ product.price }}</div>
+            {% blocktranslate count products_count=product.quantity %}
+                <div>Количество: остался один товар</div>
+                {% plural %}
+                <div>Количество: {{ products_count }} товар</div>
+            {% endblocktranslate %}
+            <div>{% translate 'Скидка:' %} {{ product.discount }}%</div>
+            <div>{% translate 'Архивирован:' %} {{ product.archived }}</div>
+        </div>
+        <div>
+            <a href="{% url 'shopapp:products_update' pk=product.pk %}">{% translate 'Редактировать продукт' %}</a>
+        </div>
+        <div>
+            <a href="{% url 'shopapp:products_delete' pk=product.pk %}">{% translate 'Удалить продукт' %}</a>
+        </div>
+        <div>
+            <a href="{% url 'shopapp:products_list' %}">{% translate 'Вернуться к списку продуктов' %}</a>
+        </div>
+    </div>
+</body>

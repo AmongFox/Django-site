@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="{% static 'css/detail-style.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% translate 'Информация о заказе' %}</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>{% translate 'Заказ' %} <strong>№{{ orders.pk }}</strong></h1>
+        <div class="values">
+            <p>{% translate 'Пользователь:' %} {% firstof orders.user.first_name order.user.username %}</p>
+            <p>{% translate 'Промокод:' %} {{ orders.promocode }}</p>
+            <p>{% translate 'Адрес:' %} {{ orders.delivery_address }}</p>
+            <div>
+                {% translate 'Продукты заказа:' %}
+                <ul>
+                    {% for product in orders.products.all %}
+                        <li>{{ product.name }} | {{ product.price }}$</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+        <div>
+            <a href="{% url 'shopapp:orders_list' %}">{% translate 'Вернуться к списку заказов' %}</a>
+        </div>
+        <div>
+            <a href="{% url 'shopapp:orders_update' pk=orders.pk %}">{% translate 'Редактировать заказ' %}</a>
+        </div>
+        <div>
+            <a href="{% url 'shopapp:orders_delete' pk=orders.pk %}">{% translate 'Удалить заказ' %}</a>
+        </div>
+    </div>
+</body>

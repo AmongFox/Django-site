@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="{% static 'css/list-style.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% translate 'Список заказов' %}</title>
+</head>
+<body>
+<h1>{% translate 'Заказы' %}</h1>
+{% if orders %}
+<table>
+  <tr>
+    <th>{% translate 'Заказ' %}</th>
+    <th>{% translate 'Имя' %}</th>
+    <th>{% translate 'Промокод' %}</th>
+    <th>{% translate 'Адрес' %}</th>
+  </tr>
+  {% for order in orders %}
+  <tr>
+    <td><a href="{% url 'shopapp:orders_detail' pk=order.pk %}">№{{ order.pk }}</a></td>
+    <td>{% firstof order.user.first_name order.user.username %}</td>
+    <td>{{ order.promocode }}</td>
+    <td>{{ order.delivery_address }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+  <h3>{% translate 'Нет заказов!' %}</h3>
+{% endif %}
+
+<div>
+    <p><a href="{% url 'shopapp:orders_create' %}">{% translate 'Создание нового заказа' %}</a></p>
+</div>
+</body>
+</html>

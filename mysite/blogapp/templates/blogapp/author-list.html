@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="{% static 'css/list-style.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% translate 'Авторы' %}</title>
+</head>
+<body>
+<h1>{% translate 'Список авторов' %}</h1>
+{% if authors %}
+<table>
+  <tr>
+    <th>{% translate 'Имя' %}</th>
+    <th>{% translate 'Статьи' %}</th>
+  </tr>
+  {% for author in authors %}
+  <tr>
+    <td><a href="{% url 'blogapp:author_detail' author.pk %}">{{ author.name }}</a></td>
+    {% for article in author.articles.all %}
+      <td><a href="{% url 'blogapp:article_detail' article.pk %}">{{ article.title }}</a></td>
+    {% endfor %}
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+  <h3>{% translate 'Нет авторов!' %}</h3>
+{% endif %}
+<div>
+    <p><a href="{% url 'blogapp:create_author' %}">{% translate 'Создание нового автора' %}</a></p>
+</div>
+</body>

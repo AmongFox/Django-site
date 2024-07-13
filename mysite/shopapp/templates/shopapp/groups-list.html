@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="{% static 'css/list-style.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% translate 'Список групп' %}</title>
+</head>
+<body>
+<h1>{% translate 'Группы' %}</h1>
+{% if groups %}
+<table>
+  <tr>
+    <th>{% translate 'Название' %}</th>
+    <th>{% translate 'Права' %}</th>
+  </tr>
+  {% for group in groups %}
+  <tr>
+    <td>{{ group.name }}</td>
+    <td>
+        {% if group.permission %}
+            {% for permission in group.permission.all %}
+                {{ permission.name }}
+                {{ permission.codename }}
+            {% endfor %}
+        {% else %}
+            {% translate 'Нет прав' %}
+        {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% else %}
+  <h3>{% translate 'Группы не найдены.' %}</h3>
+{% endif %}
+
+<div>
+    <p><a href="{% url 'shopapp:groups_create' %}">{% translate 'Создание новой группы' %}</a></p>
+</div>
+</body>
+</html>

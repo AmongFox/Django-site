@@ -1,0 +1,48 @@
+{% extends 'shopapp/base.html' %}
+{% load cache %}
+
+{% block title %}
+    Shop Index
+{% endblock %}
+
+
+{% block body %}
+
+<h1>
+    Shop Index
+</h1>
+
+<div>
+    <ul>
+        <h4>Number of goods: {{ products | length }}</h4>
+        {% for product, price in products %}
+            <li>
+                {{ product|capfirst }} for {{ price }}$
+                {% if price > 2000 %}
+                    | Sale!! 15% discount !
+                {% endif %}
+            </li>
+        {% empty %}
+            Not Found Products
+        {% endfor %}
+    </ul>
+</div>
+
+<div>
+    <strong>
+        У вас {{ items }} продукт{{ items|pluralize:"а,ов" }}
+    </strong>
+</div>
+
+<div>
+    Time Running: {{ time_running }}
+</div>
+<div>
+    {% cache 600 lorem %}
+        <div>
+            {% lorem 2 p random %}
+        </div>
+    {% endcache %}
+</div>
+
+{% endblock %}

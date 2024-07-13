@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+{% load cache %}
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="{% static 'css/list-style.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Список заказов</title>
+</head>
+{% cache 300 orders_info user.pk %}
+<body>
+<h1>Список заказов пользователя {{ user.username }}</h1>
+{% if orders %}
+  {% for order in orders %}
+    <table class="order-table">
+      <thead>
+        <tr>
+          <th>Номер заказа</th>
+          <th>Дата заказа</th>
+          <th>Названия</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ order.id }}</td>
+          <td>{{ order.created_at }}</td>
+          <td>
+            {% for product in order.products.all|slice:":6" %}
+              <li><a href="{% url 'shopapp:products_detail' pk=product.pk %}">{{ product.name }}</a></li>
+            {% endfor %}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  {% endfor %}
+{% else %}
+  <p>Нет заказов.</p>
+{% endif %}
+</body>
+{% endcache %}
+</html>

@@ -1,0 +1,75 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+
+.form-container {
+  width: 80%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+
+  display: flex;
+  justify-content: center; /* Центрирование по горизонтали */
+  align-items: center; /* Центрирование по вертикали */
+}
+
+h2 {
+  color: #333;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input, textarea {
+  width: 100%;
+  height: 100%;
+  max-width: 900px;
+  max-height: 300px;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+@media screen and (max-width: 640px, max-height: 768px) {
+  .form-container {
+    width: 90%;
+    height: 90%;
+    padding: 10px;
+  }
+}
+
+.button-container {
+  display: flex
+  justify-content: flex-end;
+}
+
+button {
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button-delete {
+  background-color: #dc3545;
+}
+
+.button-back {
+  background-color: #007bff;
+  text-align: right;
+}
+
+.button-delete:hover {
+  background-color: #c82333;
+}
+
+.button-back:hover {
+  background-color: #0069d9;
+}

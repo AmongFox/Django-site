@@ -1,0 +1,549 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-06-30 22:16+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%"
+"10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%"
+"100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: .\blogapp\models.py:8 .\blogapp\templates\blogapp\author-list.html:16
+#: .\myauth\forms.py:19 .\shopapp\templates\shopapp\orders-list.html:17
+#: .\shopapp\templates\shopapp\products-list.html:16
+msgid "Имя"
+msgstr "Имя"
+
+#: .\blogapp\models.py:9
+msgid "Биография"
+msgstr "Биография:"
+
+#: .\blogapp\models.py:17 .\blogapp\models.py:25
+#: .\blogapp\templates\blogapp\category-list.html:16
+#: .\blogapp\templates\blogapp\tag-list.html:16 .\shopapp\models.py:24
+#: .\shopapp\templates\shopapp\groups-list.html:15
+#: .\shopapp\templates\shopapp\products-list.html:22
+msgid "Название"
+msgstr "Название"
+
+#: .\blogapp\models.py:33 .\blogapp\templates\blogapp\article-list.html:16
+msgid "Заголовок"
+msgstr "Заголовок"
+
+#: .\blogapp\models.py:34
+msgid "Содержание"
+msgstr "Содержание"
+
+#: .\blogapp\models.py:35
+msgid "Дата создания"
+msgstr "Дата создания"
+
+#: .\blogapp\models.py:38 .\blogapp\templates\blogapp\article-list.html:18
+msgid "Автор"
+msgstr "Автор"
+
+#: .\blogapp\models.py:44 .\blogapp\templates\blogapp\article-list.html:19
+msgid "Категория"
+msgstr "Категория"
+
+#: .\blogapp\models.py:50 .\blogapp\templates\blogapp\article-list.html:20
+#: .\blogapp\templates\blogapp\tag-list.html:9
+msgid "Теги"
+msgstr "Теги"
+
+#: .\blogapp\models.py:55
+msgid "Создатель"
+msgstr "Создатель"
+
+#: .\blogapp\templates\blogapp\article-create.html:9
+msgid "Форма создания статьи"
+msgstr "Форма создания статьи"
+
+#: .\blogapp\templates\blogapp\article-create.html:13
+msgid "Создание статьи"
+msgstr "Создание статьи"
+
+#: .\blogapp\templates\blogapp\article-create.html:17
+#: .\blogapp\templates\blogapp\author-create.html:17
+#: .\blogapp\templates\blogapp\category-create.html:17
+#: .\blogapp\templates\blogapp\tag-create.html:17
+#: .\shopapp\templates\shopapp\groups-create.html:17
+#: .\shopapp\templates\shopapp\orders-create.html:18
+#: .\shopapp\templates\shopapp\products-create.html:17
+msgid "Отправить"
+msgstr "Отправить"
+
+#: .\blogapp\templates\blogapp\article-create.html:19
+#: .\blogapp\templates\blogapp\article-list.html:12
+msgid "Список статей"
+msgstr "Список статей"
+
+#: .\blogapp\templates\blogapp\article-delete.html:9
+#: .\blogapp\templates\blogapp\article-delete.html:20
+msgid "Удаление статьи"
+msgstr "Удаление статьи"
+
+#: .\blogapp\templates\blogapp\article-delete.html:21
+msgid "Вы уверены, что хотите удалить статью?"
+msgstr "Вы уверены, что хотите удалить статью?"
+
+#: .\blogapp\templates\blogapp\article-delete.html:26
+msgid "Удалить"
+msgstr "Удалить"
+
+#: .\blogapp\templates\blogapp\article-delete.html:27
+#: .\shopapp\templates\shopapp\orders-delete.html:27
+#: .\shopapp\templates\shopapp\products-delete.html:27
+msgid "Отмена"
+msgstr "Отмена"
+
+#: .\blogapp\templates\blogapp\article-detail.html:9
+#: .\blogapp\templates\blogapp\author-detail.html:9
+msgid "Статья"
+msgstr "Статья"
+
+#: .\blogapp\templates\blogapp\article-list.html:9
+#: .\blogapp\templates\blogapp\author-list.html:17
+msgid "Статьи"
+msgstr "Статьи"
+
+#: .\blogapp\templates\blogapp\article-list.html:17
+msgid "Дата публикации"
+msgstr "Дата публикации"
+
+#: .\blogapp\templates\blogapp\article-list.html:41
+msgid "Нет статей!"
+msgstr "Нет статей!"
+
+#: .\blogapp\templates\blogapp\article-list.html:44
+msgid "Создание новой статьи"
+msgstr "Создание нового статьи"
+
+#: .\blogapp\templates\blogapp\author-create.html:9
+msgid "Форма создания автора"
+msgstr "Форма создания автора"
+
+#: .\blogapp\templates\blogapp\author-create.html:13
+msgid "Регистрация автора"
+msgstr "Регистрация автора"
+
+#: .\blogapp\templates\blogapp\author-create.html:19
+#: .\blogapp\templates\blogapp\author-list.html:12
+msgid "Список авторов"
+msgstr "Список авторов"
+
+#: .\blogapp\templates\blogapp\author-list.html:9
+msgid "Авторы"
+msgstr "Авторы"
+
+#: .\blogapp\templates\blogapp\author-list.html:29
+msgid "Нет авторов!"
+msgstr "Нет авторов!"
+
+#: .\blogapp\templates\blogapp\author-list.html:32
+msgid "Создание нового автора"
+msgstr "Создание нового автора"
+
+#: .\blogapp\templates\blogapp\category-create.html:9
+msgid "Форма создания категории"
+msgstr "Форма создания категории"
+
+#: .\blogapp\templates\blogapp\category-create.html:13
+msgid "Создание категории"
+msgstr "Создание категории"
+
+#: .\blogapp\templates\blogapp\category-create.html:19
+#: .\blogapp\templates\blogapp\category-list.html:12
+msgid "Список категорий"
+msgstr "Список категорий"
+
+#: .\blogapp\templates\blogapp\category-list.html:9
+msgid "Категории"
+msgstr "Категории"
+
+#: .\blogapp\templates\blogapp\category-list.html:17
+msgid "Статьи с этой категорией"
+msgstr "Статьи с этой категорией"
+
+#: .\blogapp\templates\blogapp\category-list.html:29
+msgid "Нет категорий!"
+msgstr "Нет категорий!"
+
+#: .\blogapp\templates\blogapp\category-list.html:32
+msgid "Создание новой категории"
+msgstr "Создание новой категории"
+
+#: .\blogapp\templates\blogapp\tag-create.html:9
+msgid "Форма создания тега"
+msgstr "Форма создания тега"
+
+#: .\blogapp\templates\blogapp\tag-create.html:13
+msgid "Создание тега"
+msgstr "Создание тега"
+
+#: .\blogapp\templates\blogapp\tag-create.html:19
+#: .\blogapp\templates\blogapp\tag-list.html:12
+msgid "Список тегов"
+msgstr "Список тегов"
+
+#: .\blogapp\templates\blogapp\tag-list.html:17
+msgid "Статьи с этим тегом"
+msgstr "Статьи с этим тегом"
+
+#: .\blogapp\templates\blogapp\tag-list.html:29
+msgid "Нет тегов!"
+msgstr "Нет тегов!"
+
+#: .\blogapp\templates\blogapp\tag-list.html:32
+msgid "Создание нового тега"
+msgstr "Создание нового тега"
+
+#: .\myauth\forms.py:18
+msgid "Имя пользователя"
+msgstr "Имя пользователя"
+
+#: .\myauth\forms.py:20
+msgid "Фамилия"
+msgstr "Фамилия"
+
+#: .\myauth\forms.py:21
+msgid "Почта"
+msgstr "Почта"
+
+#: .\myauth\forms.py:37
+msgid "Эта почта уже занята"
+msgstr "Эта почта уже занята"
+
+#: .\myauth\views.py:22
+msgid "Hello world!"
+msgstr "Привет, Мир!"
+
+#: .\myauth\views.py:28
+msgid "one product"
+msgid_plural "{count} products"
+msgstr[0] "{count} товар"
+msgstr[1] "{count} товара"
+msgstr[2] "{count} товаров"
+msgstr[3] ""
+
+#: .\mysite\settings.py:133
+msgid "Russian"
+msgstr "Русский"
+
+#: .\mysite\settings.py:134
+msgid "English"
+msgstr "Английский"
+
+#: .\shopapp\forms.py:42 .\shopapp\models.py:26
+#: .\shopapp\templates\shopapp\products-list.html:23
+msgid "Цена"
+msgstr "Цена"
+
+#: .\shopapp\forms.py:45 .\shopapp\models.py:27
+#: .\shopapp\templates\shopapp\products-list.html:16
+msgid "Процент скидки"
+msgstr "Процент скидки"
+
+#: .\shopapp\forms.py:47
+msgid "Список изображений"
+msgstr "Список изображений"
+
+#: .\shopapp\models.py:25
+msgid "Описание"
+msgstr "Описание"
+
+#: .\shopapp\models.py:28
+msgid "Количество товара"
+msgstr ""
+
+#: .\shopapp\models.py:29 .\shopapp\models.py:64
+msgid "Время создания"
+msgstr "Время создания"
+
+#: .\shopapp\models.py:30 .\shopapp\models.py:65
+msgid "Пользователь"
+msgstr "Пользователь"
+
+#: .\shopapp\models.py:32
+msgid "Предпросмотр"
+msgstr "Предпросмотр"
+
+#: .\shopapp\models.py:46 .\shopapp\templates\shopapp\products-list.html:17
+msgid "Изображение"
+msgstr "Изображение"
+
+#: .\shopapp\models.py:61
+msgid "Адрес доставки"
+msgstr "Адрес доставки"
+
+#: .\shopapp\models.py:62 .\shopapp\templates\shopapp\orders-list.html:18
+msgid "Промокод"
+msgstr "Промокод"
+
+#: .\shopapp\models.py:66 .\shopapp\templates\shopapp\products-detail.html:42
+msgid "Продукт"
+msgstr "Продукт"
+
+#: .\shopapp\templates\shopapp\groups-create.html:8
+msgid "Форма создания группы"
+msgstr "Форма создания группы"
+
+#: .\shopapp\templates\shopapp\groups-create.html:13
+msgid "Создание группы"
+msgstr "Создание группы"
+
+#: .\shopapp\templates\shopapp\groups-create.html:19
+#: .\shopapp\templates\shopapp\groups-list.html:8
+msgid "Список групп"
+msgstr "Список групп"
+
+#: .\shopapp\templates\shopapp\groups-list.html:11
+msgid "Группы"
+msgstr "Группы"
+
+#: .\shopapp\templates\shopapp\groups-list.html:16
+msgid "Права"
+msgstr "Права"
+
+#: .\shopapp\templates\shopapp\groups-list.html:28
+msgid "Нет прав"
+msgstr "Нет прав!"
+
+#: .\shopapp\templates\shopapp\groups-list.html:35
+msgid "Группы не найдены."
+msgstr "Группы не найдены."
+
+#: .\shopapp\templates\shopapp\groups-list.html:39
+msgid "Создание новой группы"
+msgstr "Создание нового группы"
+
+#: .\shopapp\templates\shopapp\orders-create.html:9
+msgid "Форма оформления заказа"
+msgstr "Форма оформления заказа"
+
+#: .\shopapp\templates\shopapp\orders-create.html:14
+msgid "Создание заказа"
+msgstr "Создание заказа"
+
+#: .\shopapp\templates\shopapp\orders-create.html:20
+#: .\shopapp\templates\shopapp\orders-list.html:9
+msgid "Список заказов"
+msgstr "Список заказов"
+
+#: .\shopapp\templates\shopapp\orders-delete.html:9
+#: .\shopapp\templates\shopapp\orders-delete.html:20
+msgid "Отмена заказа"
+msgstr "Отмена заказа"
+
+#: .\shopapp\templates\shopapp\orders-delete.html:21
+msgid "Вы уверены, что хотите отменить заказ?"
+msgstr "Вы уверены, что хотите отменить заказ?"
+
+#: .\shopapp\templates\shopapp\orders-delete.html:26
+msgid "Отменить"
+msgstr "Отменить"
+
+#: .\shopapp\templates\shopapp\orders-detail.html:9
+msgid "Информация о заказе"
+msgstr "Информация о заказе"
+
+#: .\shopapp\templates\shopapp\orders-detail.html:14
+#: .\shopapp\templates\shopapp\orders-list.html:16
+msgid "Заказ"
+msgstr "Заказ"
+
+#: .\shopapp\templates\shopapp\orders-detail.html:16
+msgid "Пользователь:"
+msgstr "Пользователь:"
+
+#: .\shopapp\templates\shopapp\orders-detail.html:17
+msgid "Промокод:"
+msgstr "Промокод:"
+
+#: .\shopapp\templates\shopapp\orders-detail.html:18
+msgid "Адрес:"
+msgstr "Адрес:"
+
+#: .\shopapp\templates\shopapp\orders-detail.html:20
+msgid "Продукты заказа:"
+msgstr "Продукты заказа:"
+
+#: .\shopapp\templates\shopapp\orders-detail.html:30
+msgid "Вернуться к списку заказов"
+msgstr "Вернуться к списку заказов"
+
+#: .\shopapp\templates\shopapp\orders-detail.html:33
+msgid "Редактировать заказ"
+msgstr "Редактировать заказ"
+
+#: .\shopapp\templates\shopapp\orders-detail.html:36
+msgid "Удалить заказ"
+msgstr "Удалить заказ"
+
+#: .\shopapp\templates\shopapp\orders-edit.html:9
+msgid "Форма редактирования заказа"
+msgstr "Форма редактирования заказа"
+
+#: .\shopapp\templates\shopapp\orders-edit.html:14
+msgid "Редактирование заказа"
+msgstr "Редактирование заказа"
+
+#: .\shopapp\templates\shopapp\orders-edit.html:18
+#: .\shopapp\templates\shopapp\products-edit.html:18
+msgid "Изменить"
+msgstr "Изменить"
+
+#: .\shopapp\templates\shopapp\orders-edit.html:20
+msgid "Вернуться к заказу"
+msgstr "Вернуться к заказу"
+
+#: .\shopapp\templates\shopapp\orders-list.html:12
+msgid "Заказы"
+msgstr "Заказы"
+
+#: .\shopapp\templates\shopapp\orders-list.html:19
+msgid "Адрес"
+msgstr "Адрес"
+
+#: .\shopapp\templates\shopapp\orders-list.html:31
+msgid "Нет заказов!"
+msgstr "Нет заказов!"
+
+#: .\shopapp\templates\shopapp\orders-list.html:35
+msgid "Создание нового заказа"
+msgstr "Создание нового заказа"
+
+#: .\shopapp\templates\shopapp\products-create.html:13
+msgid "Создание продукта"
+msgstr "Создание продукта"
+
+#: .\shopapp\templates\shopapp\products-create.html:19
+#: .\shopapp\templates\shopapp\products-list.html:9
+msgid "Список продуктов"
+msgstr "Список продуктов"
+
+#: .\shopapp\templates\shopapp\products-delete.html:9
+msgid "Архивация продукта"
+msgstr "Архивация продукта"
+
+#: .\shopapp\templates\shopapp\products-delete.html:20
+msgid "Архивирование продукта"
+msgstr "Архивирование продукта"
+
+#: .\shopapp\templates\shopapp\products-delete.html:21
+msgid "Вы уверены, что хотите архивировать продукт?"
+msgstr "Вы уверены, что хотите архивировать продукт?"
+
+#: .\shopapp\templates\shopapp\products-delete.html:26
+msgid "Архивировать"
+msgstr "Архивировать"
+
+#: .\shopapp\templates\shopapp\products-detail.html:9
+msgid "Информация о продукте"
+msgstr "Информация о продукте"
+
+#: .\shopapp\templates\shopapp\products-detail.html:29
+msgid "Показать/скрыть изображение"
+msgstr "Показать/скрыть изображение"
+
+#: .\shopapp\templates\shopapp\products-detail.html:30
+msgid "Изображения:"
+msgstr "Изображения:"
+
+#: .\shopapp\templates\shopapp\products-detail.html:38
+msgid "Изображения не найдены"
+msgstr "Изображения не найдены"
+
+#: .\shopapp\templates\shopapp\products-detail.html:45
+msgid "Цена:"
+msgstr "Цена:"
+
+#: .\shopapp\templates\shopapp\products-detail.html:46
+#, python-format
+msgid ""
+"\n"
+"                <div>Количество: остался один товар</div>\n"
+"                "
+msgid_plural ""
+"\n"
+"                <div>Количество: %(products_count)s товар</div>\n"
+"            "
+msgstr[0] ""
+"\n"
+"                <div>Количество: %(products_count)s товар</div>\n"
+"            "
+msgstr[1] ""
+"\n"
+"                <div>Количество: %(products_count)s товара</div>\n"
+"            "
+msgstr[2] ""
+"\n"
+"                <div>Количество: %(products_count)s товаров</div>\n"
+"            "
+
+#: .\shopapp\templates\shopapp\products-detail.html:51
+msgid "Скидка:"
+msgstr "Скидка:"
+
+#: .\shopapp\templates\shopapp\products-detail.html:52
+msgid "Архивирован:"
+msgstr "Архивирован:"
+
+#: .\shopapp\templates\shopapp\products-detail.html:55
+msgid "Редактировать продукт"
+msgstr "Редактировать продукт"
+
+#: .\shopapp\templates\shopapp\products-detail.html:58
+msgid "Удалить продукт"
+msgstr "Удалить продукт"
+
+#: .\shopapp\templates\shopapp\products-detail.html:61
+msgid "Вернуться к списку продуктов"
+msgstr "Вернуться к списку продуктов"
+
+#: .\shopapp\templates\shopapp\products-edit.html:9
+msgid "Форма редактирования продукта"
+msgstr "Форма редактирования продукта"
+
+#: .\shopapp\templates\shopapp\products-edit.html:14
+msgid "Редактирование продукта"
+msgstr "Редактирование продукта"
+
+#: .\shopapp\templates\shopapp\products-edit.html:20
+msgid "Вернуться к продукту"
+msgstr "Вернуться к продукту"
+
+#: .\shopapp\templates\shopapp\products-list.html:12
+msgid "Продукты"
+msgstr "Продукты"
+
+#: .\shopapp\templates\shopapp\products-list.html:16
+msgid "Стоимость"
+msgstr "Стоимость"
+
+#: .\shopapp\templates\shopapp\products-list.html:24
+msgid "Отсутствует"
+msgstr "Отсутствует"
+
+#: .\shopapp\templates\shopapp\products-list.html:25
+msgid "Скидка"
+msgstr "Скидка"
+
+#: .\shopapp\templates\shopapp\products-list.html:34
+msgid "Нет продуктов!"
+msgstr "Нет продуктов!"
+
+#: .\shopapp\templates\shopapp\products-list.html:39
+msgid "Создание нового продукта"
+msgstr "Создание нового продукта"
