@@ -13,11 +13,11 @@
     <div class="container">
         <h1>{% translate 'Заказ' %} <strong>№{{ orders.pk }}</strong></h1>
         <div class="values">
-            <p>{% translate 'Пользователь:' %} {% firstof orders.user.first_name order.user.username %}</p>
-            <p>{% translate 'Промокод:' %} {{ orders.promocode }}</p>
-            <p>{% translate 'Адрес:' %} {{ orders.delivery_address }}</p>
+            <p>{% translate 'Пользователь' %}: {% firstof orders.user.first_name order.user.username %}</p>
+            <p>{% translate 'Промокод' %}: {{ orders.promocode }}</p>
+            <p>{% translate 'Адрес' %}: {{ orders.delivery_address }}</p>
             <div>
-                {% translate 'Продукты заказа:' %}
+                {% translate 'Продукты заказа' %}:
                 <ul>
                     {% for product in orders.products.all %}
                         <li>{{ product.name }} | {{ product.price }}$</li>

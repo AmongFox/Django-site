@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load i18n %}
 <html lang="en">
 <head>
   <link rel="stylesheet" href="{% static 'css/list-style.css' %}">
@@ -32,7 +33,7 @@
   {% endfor %}
 </table>
 {% else %}
-  <h3>{% translate 'Группы не найдены.' %}</h3>
+  <h3>{% translate 'Группы не найдены' %}</h3>
 {% endif %}
 
 <div>

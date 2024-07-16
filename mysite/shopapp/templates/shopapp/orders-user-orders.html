@@ -7,19 +7,19 @@
   <link rel="stylesheet" href="{% static 'css/list-style.css' %}">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Список заказов</title>
+  <title>{% translate 'Список заказов' %}</title>
 </head>
 {% cache 300 orders_info user.pk %}
 <body>
-<h1>Список заказов пользователя {{ user.username }}</h1>
+<h1>{% translate 'Список заказов пользователя' %} {{ user.username }}</h1>
 {% if orders %}
   {% for order in orders %}
     <table class="order-table">
       <thead>
         <tr>
-          <th>Номер заказа</th>
-          <th>Дата заказа</th>
-          <th>Названия</th>
+          <th>{% translate 'Номер заказа' %}</th>
+          <th>{% translate 'Дата заказа' %}</th>
+          <th>{% translate 'Названия' %}</th>
         </tr>
       </thead>
       <tbody>
@@ -36,7 +36,7 @@
     </table>
   {% endfor %}
 {% else %}
-  <p>Нет заказов.</p>
+  <p>{% translate 'Нет заказов' %}</p>
 {% endif %}
 </body>
 {% endcache %}

@@ -22,7 +22,7 @@
       <p>{% translate 'Название' %} — <a href="{% url 'shopapp:products_detail' pk=product.pk %}">{{ product.name }}</a></p>
       <p>{% translate 'Цена' %} — {{ product.price }}</p>
       {% translate 'Отсутствует' as no_discount %}
-      <p>{% translate 'Скидка' %} — {% firstof product.discount no_discount %}</p>
+      <p>{% translate 'Скидка' %} — {{ product.discount|default:no_discount }}</p>
     </td>
     {% if product.preview %}
       <td><img src="{{ product.preview.url }}" width="120" height="120" alt="{{ product.preview.name }}"></td>
@@ -31,7 +31,7 @@
   {% endfor %}
 </table>
 {% else %}
-  <h3>{% translate 'Нет продуктов!' %}</h3>
+  <h3>{% translate 'Нет продуктов' %}</h3>
 {% endif %}
 
 <div>

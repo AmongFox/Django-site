@@ -43,19 +43,17 @@ class Article(models.Model):
     category = models.ForeignKey(
         Category,
         verbose_name=gettext_lazy("Категория"),
-        on_delete=models.CASCADE,
-        related_name="articles",
+        on_delete=models.CASCADE
     )
     tags = models.ManyToManyField(
         Tag,
-        verbose_name=gettext_lazy("Теги"),
-        related_name="articles",
+        verbose_name=gettext_lazy("Теги")
     )
     created_by = models.ForeignKey(
         User,
         verbose_name=gettext_lazy("Создатель"),
         on_delete=models.CASCADE,
-        related_name="user",
+        related_name="articles",
     )
 
     def get_absolute_url(self):

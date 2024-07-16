@@ -27,7 +27,7 @@
             </div>
         {% endif %}
         <button onclick="toggleImage()">{% translate 'Показать/скрыть изображение' %}</button>
-        <h3>{% translate 'Изображения:' %}</h3>
+        <h3>{% translate 'Изображения' %}:</h3>
         <div class="images-container" id="images-container">
         {% for image in product.images.all %}
             <div>
@@ -42,14 +42,14 @@
         <h1>{% translate 'Продукт' %} — <strong>{{ product.name }}</strong></h1>
             <div><em>{{ product.description }}</em></div>
         <div class="values">
-            <div>{% translate 'Цена:' %} {{ product.price }}</div>
+            <div>{% translate 'Цена' %}: {{ product.price }}</div>
             {% blocktranslate count products_count=product.quantity %}
                 <div>Количество: остался один товар</div>
                 {% plural %}
                 <div>Количество: {{ products_count }} товар</div>
             {% endblocktranslate %}
-            <div>{% translate 'Скидка:' %} {{ product.discount }}%</div>
-            <div>{% translate 'Архивирован:' %} {{ product.archived }}</div>
+            <div>{% translate 'Скидка' %}: {{ product.discount }}%</div>
+            <div>{% translate 'Архивирован' %}: {{ product.archived }}</div>
         </div>
         <div>
             <a href="{% url 'shopapp:products_update' pk=product.pk %}">{% translate 'Редактировать продукт' %}</a>

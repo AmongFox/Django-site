@@ -26,7 +26,7 @@
   {% endfor %}
 </table>
 {% else %}
-  <h3>{% translate 'Нет категорий!' %}</h3>
+  <h3>{% translate 'Нет категорий'! %}</h3>
 {% endif %}
 <div>
     <p><a href="{% url 'blogapp:category_create' %}">{% translate 'Создание новой категории' %}</a></p>

@@ -1,14 +1,36 @@
-{% extends 'myauth/base.html' %}
-
-{% block title %}
-    Регистрация
-{% endblock %}
-
-{% block body %}
-    <h1>Регистрация</h1>
+<!DOCTYPE html>
+{% load static %}
+{% load i18n %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/profile-register.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% translate 'Регистрация' %}</title>
+</head>
+<body>
+    <h2>{% translate 'Регистрация пользователя' %}</h2>
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" value="Register">Зарегистрироваться</button>
+        <div class="form-group">
+            {{ form.username.label_tag }}
+            {{ form.username }}
+            <li>{% translate 'Не более 150 символов' %}</li>
+            <li>{% translate 'Только буквы, цифры и символы' %}</li>
+        </div>
+        <div class="form-group">
+            {{ form.password1.label_tag }}
+            {{ form.password1 }}
+            <li>{% translate 'Пароль не должен быть похож на личную информацию' %}</li>
+            <li>{% translate 'Минимум 8 символов' %}</li>
+            <li>{% translate 'Пароль не может состоять только из цифр' %}</li>
+            <li>{% translate 'Пароль не должен быть простым и распространенным' %}</li>
+        </div>
+        <div class="form-group">
+            {{ form.password2.label_tag }}
+            {{ form.password2 }}
+        </div>
+        <button type="submit">{% translate 'Регистрация' %}</button>
     </form>
-{% endblock %}
+</body>
+</html>

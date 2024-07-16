@@ -26,7 +26,7 @@
   {% endfor %}
 </table>
 {% else %}
-  <h3>{% translate 'Нет тегов!' %}</h3>
+  <h3>{% translate 'Нет тегов'! %}</h3>
 {% endif %}
 <div>
     <p><a href="{% url 'blogapp:create_tag' %}">{% translate 'Создание нового тега' %}</a></p>

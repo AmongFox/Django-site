@@ -13,8 +13,8 @@
     <div class="container">
         <h1>{{ article.title }}</h1>
         <p>{{ article.content }}</p>
-        <p>Дата публикации: {{ article.pub_date }}</p>
-        <a href="{% url 'blogapp:articles' %}">Вернуться к списку статей</a>
-        <a href="{% url 'blogapp:delete_article' article.id %}">Удалить статью</a>
+        <p>{% translate 'Дата публикации' %}: {{ article.pub_date }}</p>
+        <a href="{% url 'blogapp:articles' %}">{% translate 'Вернуться к списку статей' %}</a>
+        <a href="{% url 'blogapp:delete_article' article.id %}">{% translate 'Удалить статью' %}</a>
     </div>
 </body>

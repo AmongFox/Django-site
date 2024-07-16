@@ -1,8 +1,8 @@
 from django.contrib.auth.views import LoginView
 from django.urls import path
+from django.views.decorators.cache import cache_page
 
 from .views import (
-    HelloView,
     ProfileEditView,
     ProfileListView,
     ProfileView,
@@ -18,18 +18,17 @@ app_name = "myauth"
 
 
 urlpatterns = [
-    path("hello/", HelloView.as_view(), name="hello"),
-
     path("register/", RegisterView.as_view(), name="register"),
     path("login/", LoginView.as_view(
         template_name="myauth/login.html",
-        redirect_authenticated_user=True),
-         name="login"
-         ),
+        redirect_authenticated_user=True,
+    ),
+        name="login"
+        ),
     path("logout/", logout_view, name="logout"),
 
     path("profile/<int:pk>/", ProfileView.as_view(), name="profile"),
-    path("profile/list/", ProfileListView.as_view(), name="profile_list"),
+    path("profile/list/", cache_page(60)(ProfileListView.as_view()), name="profile_list"),
     path("profile/<int:pk>/edit/", ProfileEditView.as_view(), name="profile_edit"),
 
     path("cookie/get/", get_cookie_view, name="cookie_get"),

@@ -1,36 +1,44 @@
 <!DOCTYPE html>
 {% load static %}
+{% load i18n %}
+{% load cache %}
+{% cache 200 users_list %}
 <html lang="en">
 <head>
   <link rel="stylesheet" href="{% static 'css/profile-list.css' %}">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Список пользователей</title>
+  <title>{% translate 'Список пользователей' %}</title>
 </head>
 <body>
-<h1>Пользователи</h1>
-{% if profiles %}
+<h1>{% translate 'Пользователи' %}</h1>
+{% if users %}
 <table>
   <tr>
-    <th>Аватар</th>
-    <th>Имя пользователя</th>
+    <th>{% translate 'Аватар' %}</th>
+    <th>{% translate 'Имя пользователя' %}</th>
   </tr>
-  {% for profile in profiles %}
+  {% for user in users %}
   <tr>
     <td>
-      <p><img src="{{ profile.avatar.url }}" alt="{{ profile.avatar.name }}" class="avatar"></p>
+      {% if user.profile_user.avatar %}
+        <p><img src="{{ user.profile_user.avatar.url }}" alt="{{ user.profile_user.avatar.name }}" class="avatar"></p>
+      {% else %}
+        {% translate 'Не удалось загрузить фото профиля' %}
+      {% endif %}
     </td>
     <td>
-      <a href="{% url 'myauth:profile' pk=profile.pk %}">{{ profile.user.username }}</a>
+      <a href="{% url 'myauth:profile' pk=user.pk %}">{{ user.username }}</a>
     </td>
   </tr>
   {% endfor %}
 </table>
 {% else %}
-  <h3>Нет пользователей!</h3>
+  <h3>{% translate 'Нет пользователей' %}</h3>
 {% endif %}
 <div>
-    <a href="{% url 'myauth:profile' pk=user.profile.pk %}">Вернуться к профилю</a>
+    <a href="{% url 'myauth:profile' pk=myuser_id %}">{% translate 'Вернуться к профилю' %}</a>
 </div>
 </body>
 </html>
+{% endcache %}

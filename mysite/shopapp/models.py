@@ -81,7 +81,7 @@ class Order(models.Model):
         User,
         verbose_name=gettext_lazy("Пользователь"),
         on_delete=models.PROTECT,
-        related_name="user_orders"
+        related_name="orders"
     )
     products = models.ManyToManyField(Product, verbose_name=gettext_lazy("Продукт"), related_name="orders")
     receipt = models.FileField(null=True, upload_to="orders/receipts/")

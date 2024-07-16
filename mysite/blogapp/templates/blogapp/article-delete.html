@@ -18,7 +18,7 @@
 <div class="form-container">
   <div>
     <h2>{% translate 'Удаление статьи' %}</h2>
-    <p>{% translate 'Вы уверены, что хотите удалить статью?' %}</p>
+    <p>{% translate 'Вы уверены, что хотите удалить статью'? %}</p>
     <form id="data-form" method="post">
       {% csrf_token %}
       {{ form.as_p }}

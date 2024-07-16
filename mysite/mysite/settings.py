@@ -9,8 +9,8 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
-import os
+import logging.config
+from os import getenv, path
 from pathlib import Path
 
 from django.utils.translation import gettext_lazy
@@ -30,20 +30,21 @@ sentry_sdk.init(
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+DATABASE_DIR = BASE_DIR / "database"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-kr0gj2(0p&0^-t$bz3llh=&q=)0l4ggzxg=@n#hbo&8p*oojbc'
+SECRET_KEY = getenv("DJANGO_SECRET_KEY", "django-insecure-kr0gj2(0p&0^-t$bz3llh=&q=)0l4ggzxg=@n#hbo&8p*oojbc")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = getenv("DJANGO_DEBUG", "0") == "1"
 
 ALLOWED_HOSTS = [
     '0.0.0.0',
     '127.0.0.1',
-]
+] + getenv("DJANGO_ALLOWED_HOSTS", "").split(",")
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
@@ -124,15 +125,15 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': DATABASE_DIR / 'db.sqlite3',
     }
 }
 
 CACHES = {
     "default": {
-        # "BACKEND": "django.core.cache.backends.dummy.DummyCache",
-        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
-        "LOCATION": "A:/var/tmp/django_cache",
+        "BACKEND": "django.core.cache.backends.dummy.DummyCache",
+        # "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        # "LOCATION": "A:/var/tmp/django_cache",
     },
 }
 
@@ -180,13 +181,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = STATIC_URL + '/css/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'uploads'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'shopapp/static'),
-    os.path.join(BASE_DIR, 'myauth/static'),
+    path.join(BASE_DIR, 'shopapp/static'),
+    path.join(BASE_DIR, 'myauth/static'),
 ]
 
 # Default primary key field type
@@ -196,7 +198,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 DJANGORESIZED_DEFAULT_FORCE_FORMAT = 'JPEG'
 DJANGORESIZED_DEFAULT_SIZE = [500, 300]
 
-LOGIN_REDIRECT_URL = '/account/profile/'
+LOGIN_REDIRECT_URL = '/account/profile/list'
 LOGOUT_REDIRECT_URL = '/account/login/'
 LOGIN_URL = '/account/login'
 
@@ -268,3 +270,26 @@ LOGGING = {
         ],
     }
 }
+
+LOGLEVEL = getenv("DJANGO_LOGLEVEL", "INFO")
+logging.config.dictConfig({
+    "version": 1,
+    "disable_existing_loggers": False,
+    "formatters": {
+        "console": {
+            "format": "[%(asctime)s] (%(levelname)s) %(module)s %(lineno)s:%(name)s %(message)s"
+        },
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "console",
+        },
+    },
+    "loggers": {
+        "": {
+            "level": LOGLEVEL,
+            "handlers": ["console"],
+        },
+    },
+})

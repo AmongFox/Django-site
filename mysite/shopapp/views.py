@@ -81,7 +81,20 @@ class GroupListView(ListView):
     context_object_name = "groups"
 
 
-class GroupCreateView(CreateView):
+class ProductListView(ListView):
+    """
+    Класс отображения продуктов
+    template_name: String - Шаблон отрисовки HTML кода
+    queryset: Class - Передает значение archived=False, что прекращает отображения продуктов с таким флагом
+    context_object_name: String - Имя переменной в шаблоне
+    """
+    template_name = "shopapp/products-list.html"
+    queryset = Product.objects.filter(archived=False)
+    context_object_name = "products"
+
+
+class GroupCreateView(PermissionRequiredMixin, CreateView):
+    # permission_required =
     """
     Класс создания групп
     template_name: String - Шаблон отрисовки HTML кода
@@ -93,18 +106,6 @@ class GroupCreateView(CreateView):
     model = Group
     form_class = GroupForm
     success_url = reverse_lazy('shopapp:groups_list')
-
-
-class ProductListView(ListView):
-    """
-    Класс отображения продуктов
-    template_name: String - Шаблон отрисовки HTML кода
-    queryset: Class - Передает значение archived=False, что прекращает отображения продуктов с таким флагом
-    context_object_name: String - Имя переменной в шаблоне
-    """
-    template_name = "shopapp/products-list.html"
-    queryset = Product.objects.filter(archived=False)
-    context_object_name = "products"
 
 
 class LatestProductsView(Feed):
@@ -120,7 +121,6 @@ class LatestProductsView(Feed):
 
     def item_description(self, item):
         return item.description[:100] + "..."
-
 
 
 class ProductCreateView(PermissionRequiredMixin, CreateView):
