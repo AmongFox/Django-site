@@ -26,7 +26,7 @@
   {% endfor %}
 </table>
 {% else %}
-  <h3>{% translate 'Нет авторов'! %}</h3>
+  <h3>{% translate 'Нет авторов' %}</h3>
 {% endif %}
 <div>
     <p><a href="{% url 'blogapp:create_author' %}">{% translate 'Создание нового автора' %}</a></p>
