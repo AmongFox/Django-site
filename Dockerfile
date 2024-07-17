@@ -11,4 +11,3 @@ COPY pyproject.toml poetry.lock ./
 RUN poetry install
 
 COPY mysite .
-CMD python manage.py runserver 0.0.0.0:8000
