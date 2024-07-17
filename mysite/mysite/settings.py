@@ -11,11 +11,13 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import logging.config
 from os import getenv, path
+from dotenv import load_dotenv
 from pathlib import Path
 
 from django.utils.translation import gettext_lazy
 import sentry_sdk
 
+load_dotenv()
 
 sentry_sdk.init(
     dsn="https://622389031f0819aee853bfe470eb251e@o4506897869897728.ingest.us.sentry.io/4507537044865024",
@@ -36,10 +38,10 @@ DATABASE_DIR = BASE_DIR / "database"
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = getenv("DJANGO_SECRET_KEY", "django-insecure-kr0gj2(0p&0^-t$bz3llh=&q=)0l4ggzxg=@n#hbo&8p*oojbc")
+SECRET_KEY = getenv("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = getenv("DJANGO_DEBUG", "0") == "1"
+DEBUG = bool(getenv("DJANGO_DEBUG", False))
 
 ALLOWED_HOSTS = [
     '0.0.0.0',
@@ -82,7 +84,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -95,9 +96,10 @@ MIDDLEWARE = [
     # 'requestdataapp.middlewares.ThrottleMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.contrib.admindocs.middleware.XViewMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-    # 'django.middleware.cache.FetchFromCacheMiddleware',
 ]
+
+# if DEBUG:
+#     MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
 
 ROOT_URLCONF = 'mysite.urls'
 
@@ -181,14 +183,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = STATIC_URL + '/css/'
+STATIC_ROOT = path.join(BASE_DIR, 'css')
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'uploads'
+MEDIA_ROOT = path.join(BASE_DIR, 'uploads')
 
 STATICFILES_DIRS = [
     path.join(BASE_DIR, 'shopapp/static'),
     path.join(BASE_DIR, 'myauth/static'),
+    path.join(BASE_DIR, 'blogapp/static'),
 ]
 
 # Default primary key field type
@@ -216,27 +219,6 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
 }
 
-# LOGGING = {
-#     'version': 1,
-#     'filters': {
-#         'require_debug_true': {
-#             '()': 'django.utils.log.RequireDebugTrue',
-#         },
-#     },
-#     'handlers': {
-#         'console': {
-#             'level': 'DEBUG',
-#             'class': 'logging.StreamHandler',
-#             'filters': ['require_debug_true'],
-#         },
-#     },
-#     'loggers': {
-#         'django.db.backends': {
-#             'level': 'DEBUG',
-#             'handlers': ['console'],
-#         },
-#     },
-# }
 LOGFILE_NAME = BASE_DIR / "logs" / "log.txt"
 LOGFILE_SIZE = 5 * 1024 * 1024
 LOGFILE_COUNT = 3
