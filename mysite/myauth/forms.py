@@ -39,13 +39,13 @@ class ProfileEditForm(forms.ModelForm):
     def save(self, commit=True):
         user = super(ProfileEditForm, self).save(commit=False)
         profile = user.profile_user
-        print(profile)
         user.username = self.cleaned_data['username']
         user.first_name = self.cleaned_data['first_name']
         user.last_name = self.cleaned_data['last_name']
         user.email = self.cleaned_data['email']
-        profile.avatar = self.cleaned_data['avatar']
         profile.bio = self.cleaned_data['bio']
+        user.save()
+        profile.avatar = self.cleaned_data['avatar']
         if commit:
             user.save()
             profile.save()
