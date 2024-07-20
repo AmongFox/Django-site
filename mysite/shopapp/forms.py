@@ -23,10 +23,11 @@ class MultipleFileField(forms.FileField):
         return result
 
 
-class ProductForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.fields["description"].required = True
+class ProductCreateForm(forms.ModelForm):
+    name = forms.CharField(label=gettext_lazy("Название"), max_length=40, required=True)
+    price = forms.DecimalField(label=gettext_lazy("Цена"), min_value=0, max_value=100000, step_size=1000)
+    description = forms.CharField(label=gettext_lazy("Описание"), widget=forms.Textarea, required=True)
+    discount = forms.IntegerField(label=gettext_lazy("Процент скидки"), min_value=0, max_value=100, step_size=10)
 
     class Meta:
         model = Product
@@ -39,11 +40,17 @@ class ProductForm(forms.ModelForm):
             "preview",
         ]
 
-    price = forms.IntegerField(label=gettext_lazy("Цена"), min_value=0, max_value=100000, step_size=1000)
+    def save(self, commit=True):
+        product = super(ProductCreateForm, self).save(commit=False)
+        product.preview = None
+        product.save()
+        product.preview = self.cleaned_data["preview"]
+        if commit:
+            product.save()
+        return product
 
-    discount = forms.IntegerField(
-        label=gettext_lazy("Процент скидки"), min_value=0, max_value=150, step_size=10
-    )
+
+class ProductUpdateForm(ProductCreateForm):
     images = MultipleFileField(label=gettext_lazy("Список изображений"), required=False)
 
 
