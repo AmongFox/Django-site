@@ -30,24 +30,12 @@ from rest_framework.decorators import action
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.filters import SearchFilter, OrderingFilter
 
-from .forms import GroupForm, OrderForm, ProductForm
+from .forms import GroupForm, OrderForm, ProductCreateForm, ProductUpdateForm
 from .models import Order, Product, ProductImage
 from .serializers import ProductSerializer, OrderSerializer
 
 
 logger = logging.getLogger(__name__)
-
-
-# class PageAccessMixin:
-#     def check_order_access(self, user, *args, **kwargs):
-#         order = get_object_or_404(Order, pk=user.pk)
-#         if order.user != user:
-#             raise PermissionDenied("У вас нет доступа к этому заказу")
-#
-#     def check_product_access(self, user, *args, **kwargs):
-#         product = get_object_or_404(Product, pk=user.pk)
-#         if product.created_by != user:
-#             raise PermissionDenied("У вас нет доступа к этому товару")
 
 
 class ShopIndexView(View):
@@ -135,7 +123,7 @@ class ProductCreateView(PermissionRequiredMixin, CreateView):
     template_name = "shopapp/products-create.html"
     permission_required = "shopapp.add_product"
     model = Product
-    form_class = ProductForm
+    form_class = ProductCreateForm
     success_url = reverse_lazy('shopapp:products_list')
 
     def form_valid(self, form) -> HttpResponse:
@@ -171,7 +159,7 @@ class ProductUpdateView(PermissionRequiredMixin, UpdateView):
     template_name = "shopapp/products-edit.html"
     permission_required = "shopapp.change_product"
     model = Product
-    form_class = ProductForm
+    form_class = ProductUpdateForm
 
     def has_permission(self):
         if self.get_object().created_by_id == self.request.user.pk or self.request.user.is_superuser:
@@ -362,6 +350,11 @@ class OrderCreateView(LoginRequiredMixin, CreateView):
     model = Order
     form_class = OrderForm
     success_url = reverse_lazy('shopapp:orders_list')
+
+    def form_valid(self, form) -> HttpResponse:
+        form.instance.user = self.request.user
+        response = super().form_valid(form)
+        return response
 
 
 class OrderDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
