@@ -1,3 +1,4 @@
+import logging
 from random import random
 
 from django.contrib.auth import authenticate, login, logout
@@ -20,7 +21,10 @@ from .forms import ProfileEditForm
 from .models import Profile
 
 
-class ProfileView(DetailView):
+logger = logging.getLogger(__name__)
+
+
+class ProfileView(LoginRequiredMixin, DetailView):
     """
     Вывод данных о пользователе
     template_name: String - Шаблон отрисовки HTML кода
@@ -32,10 +36,13 @@ class ProfileView(DetailView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context["myuser"] = self.request.user
+
+        user_ip = self.request.META.get('REMOTE_ADDR', None)
+        logger.info(f"User IP: {user_ip}")
         return context
 
 
-class ProfileListView(ListView):
+class ProfileListView(LoginRequiredMixin, ListView):
     template_name = "myauth/profile-list.html"
     context_object_name = "users"
     model = User

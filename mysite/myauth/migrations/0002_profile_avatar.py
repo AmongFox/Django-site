@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
                 quality=-1,
                 scale=None,
                 size=[500, 300],
-                upload_to=myauth.models.product_preview_directory_path,
+                upload_to=myauth.models.profile_preview_directory_path,
                 verbose_name="Аватар пользователя",
             ),
         ),

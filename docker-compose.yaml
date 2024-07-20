@@ -4,11 +4,14 @@ services:
   app:
     build:
       dockerfile: ./Dockerfile
+    image:
+      bourraska/django-site
     command:
-      - gunicorn
-      - mysite.wsgi:application
-      - --bind
-      - "0.0.0.0:8000"
+      - /bin/sh
+      - -c
+      - |
+        python manage.py migrate
+        gunicorn mysite.wsgi:application -w 2 --bind "0.0.0.0:8000" --timeout 240
     ports:
       - "8000:8000"
     restart: always
@@ -22,15 +25,17 @@ services:
     volumes:
       - ./mysite/database:/app/database
 
-  grafana:
-    image: grafana/grafana:9.2.15
-    environment:
-      - GF_AUTH_ANONYMOUS_ENABLED=true
-      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
-    ports:
-      - "3000:3000"
-
-  loki:
-    image: grafana/loki:2.8.0
-    ports:
-      - "3100:3100"
+#  grafana:
+#    image: grafana/grafana:9.2.15
+#    logging:
+#      driver: none
+#    environment:
+#      - GF_AUTH_ANONYMOUS_ENABLED=true
+#      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+#    ports:
+#      - "3000:3000"
+#
+#  loki:
+#    image: grafana/loki:2.8.0
+#    ports:
+#      - "3100:3100"
