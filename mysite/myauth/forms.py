@@ -19,7 +19,12 @@ class ProfileEditForm(forms.ModelForm):
             "email",
         ]
 
-    bio = forms.CharField(label="О себе", max_length=500, widget=forms.Textarea(attrs={'rows': 8, 'cols': 50}))
+    bio = forms.CharField(
+        label="О себе",
+        max_length=500,
+        widget=forms.Textarea(attrs={'rows': 8, 'cols': 50}),
+        required=False,
+    )
     avatar = forms.ImageField(label="Аватар", required=False)
 
     def __init__(self, *args, **kwargs):

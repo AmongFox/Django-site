@@ -62,6 +62,11 @@ class ProfileEditView(LoginRequiredMixin, UpdateView):
     model = User
     form_class = ProfileEditForm
 
+    def dispatch(self, request, *args, **kwargs):
+        user = User.objects.filter(pk=kwargs.get("pk")).first()
+        Profile.objects.get_or_create(user=user)
+        return super().dispatch(request, *args, **kwargs)
+
     def has_permission(self):
         if self.kwargs.get("pk") == self.request.user.pk or self.request.user.is_superuser:
             return True
